@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= titulo %></title>
+  <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+  <div class="contenedor">
+    <header>
+      <h1><%= titulo %></h1>
+    </header>
+
+    <section class="panel">
+      <h2>Subir un dibujo</h2>
+      <form action="/subir" method="POST" enctype="multipart/form-data">
+        <div class="campo">
+          <label for="titulo">Título</label>
+          <input type="text" id="titulo" name="titulo" required>
+        </div>
+        <div class="campo">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+        </div>
+        <div class="campo">
+          <label for="imagen">Imagen</label>
+          <input type="file" id="imagen" name="imagen" accept="image/*" required>
+        </div>
+        <button type="submit">Subir</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Mis dibujos</h2>
+      <% if (dibujos.length === 0) { %>
+        <p class="vacio">Aquí aparecerán mis dibujos 🎨</p>
+      <% } %>
+      <div class="galeria">
+        <% dibujos.forEach(d => { %>
+          <figure class="dibujo">
+            <img src="/images/<%= d.archivo %>" alt="<%= d.titulo %>">
+            <figcaption>
+              <strong class="titulo"><%= d.titulo %></strong>
+              <% if (d.descripcion) { %><p class="descripcion"><%= d.descripcion %></p><% } %>
+            </figcaption>
+          </figure>
+        <% }) %>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
