@@ -132,3 +132,40 @@ button:hover {
   text-align: center;
   color: var(--suave);
 }
+
+/* La lupa al pasar el mouse indica que se puede agrandar */
+.dibujo img {
+  cursor: zoom-in;
+}
+
+/* Visor: ventana para ver un dibujo en grande */
+#visor {
+  border: none;
+  padding: 0;
+  background: transparent;
+  max-width: 95vw;
+  max-height: 95vh;
+  cursor: zoom-out;
+  outline: none; /* quita el borde azul de foco al abrirse */
+}
+
+/* Oscurece la página detrás del visor */
+#visor::backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* La imagen completa, sin recortar, ocupando como máximo la pantalla */
+#visor-imagen {
+  display: block;
+  max-width: 95vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+#visor-titulo {
+  margin: 10px 0 0;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+}
