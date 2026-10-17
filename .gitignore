@@ -1,0 +1,7 @@
+# Dependencias: se reinstalan con "npm install"
+node_modules/
+
+# Datos personales: la base de datos y las imágenes subidas
+galeria.db
+images/
+uploads/
